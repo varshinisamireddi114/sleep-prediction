@@ -1,4 +1,4 @@
-````markdown
+
 # 😴 Sleep Quality Prediction Using Lifestyle Factors
 
 A machine learning web application that predicts **sleep quality** using lifestyle and health-related factors such as sleep duration, stress level, physical activity, heart rate, and daily steps.
