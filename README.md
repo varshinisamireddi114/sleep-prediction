@@ -1,96 +1,76 @@
+````markdown
 # 😴 Sleep Quality Prediction Using Lifestyle Factors
 
-An interactive **Machine Learning** web application that predicts a person's **sleep quality** using lifestyle and health-related factors such as sleep duration, stress level, physical activity, heart rate, and daily steps.
+A machine learning web application that predicts **sleep quality** using lifestyle and health-related factors such as sleep duration, stress level, physical activity, heart rate, and daily steps.
 
-The application uses and compares predictions from **Logistic Regression** and **Random Forest Classifier** through a user-friendly **Streamlit** interface.
+The application compares predictions from **Logistic Regression** and **Random Forest Classifier** through an interactive **Streamlit** interface.
+
+> **Disclaimer:** This project is intended for educational and demonstration purposes only. The predicted sleep-quality categories are project-defined and are **not medical classifications, diagnoses, or treatment recommendations**.
 
 ---
 
-## 📖 Project Overview
+## 📌 Project Overview
 
-Sleep quality is influenced by several daily lifestyle and health habits. This project uses supervised machine learning to classify sleep quality into three project-defined categories:
+Sleep quality can be influenced by a combination of lifestyle, behavioral, and health-related factors. This project uses supervised machine learning to classify sleep quality into three project-defined categories:
 
-- 🔴 Poor
-- 🟡 Average
-- 🟢 Good
+| Category | Original Sleep Quality Score |
+|----------|------------------------------|
+| 🔴 **Poor** | 4–6 |
+| 🟡 **Average** | 7–8 |
+| 🟢 **Good** | 9 |
 
-Users enter their personal, lifestyle, and health information. The application then predicts sleep quality using two trained classification models.
+Users enter their personal, lifestyle, and health information through a Streamlit web interface. The application processes the input and generates predictions using two machine learning models:
 
-> **Note:** The sleep quality categories are created specifically for this project and are not official medical classifications.
+- **Logistic Regression**
+- **Random Forest Classifier**
+
+The predictions from both models are displayed so users can compare their results.
 
 ---
 
 ## ✨ Features
 
 - 🛌 Predict sleep quality using lifestyle and health-related inputs
-- 🤖 Logistic Regression classification model
-- 🌲 Random Forest Classifier
+- 🤖 Logistic Regression classification
+- 🌲 Random Forest classification
 - 📊 Compare predictions from both models
 - 🌐 Interactive Streamlit web application
 - ✅ Blood pressure input validation
 - ⚠️ Input range validation
+- 📈 Model evaluation using accuracy, precision, recall, and F1-score
+- 🔄 Five-fold cross-validation
 - 💡 General sleep improvement suggestions
-- 📈 Model evaluation using accuracy and cross-validation
+- 💾 Save and load trained machine learning models
+- 📊 Data preprocessing and visualization
 
 ---
 
 ## 🛠️ Tech Stack
 
-- Python
-- Pandas – Data processing
-- NumPy – Numerical operations
-- Scikit-learn – Machine learning and evaluation
-- Streamlit – Web application
-- Matplotlib – Data visualization
-- Seaborn – Data visualization
-- Joblib – Model saving and loading
+| Technology | Purpose |
+|------------|---------|
+| **Python** | Core programming language |
+| **Pandas** | Data processing and manipulation |
+| **NumPy** | Numerical operations |
+| **Scikit-learn** | Machine learning and model evaluation |
+| **Streamlit** | Interactive web application |
+| **Matplotlib** | Data visualization |
+| **Seaborn** | Statistical visualization |
+| **Joblib** | Saving and loading trained models |
 
 ---
 
-## 🤖 Machine Learning Models
+## 📊 Dataset
 
-The project trains and evaluates two supervised classification algorithms:
+### Sleep Health and Lifestyle Dataset
 
-1. **Logistic Regression**
-2. **Random Forest Classifier**
+The project uses the **Sleep Health and Lifestyle Dataset**, which contains lifestyle and health-related information associated with sleep quality.
 
-The models use preprocessing techniques such as:
-
-- Numerical feature scaling
-- Categorical feature encoding
-- Train-test splitting
-- Stratified sampling
-- Five-fold cross-validation
-
----
-
-## 📋 Input Features
-
-The application accepts the following inputs:
+The dataset contains **374 records** and includes the following features:
 
 - Gender
 - Age
 - Occupation
-- Sleep Duration
-- Physical Activity Level
-- Stress Level
-- BMI Category
-- Blood Pressure
-- Heart Rate
-- Daily Steps
-
-Blood pressure should be entered in the following format:
-
-
-120/80
-
-
- ## 📊 Dataset
-
-Dataset: Sleep Health and Lifestyle Dataset
-
-The dataset contains lifestyle and health-related information, including:
-
 - Sleep Duration
 - Quality of Sleep
 - Physical Activity Level
@@ -99,129 +79,118 @@ The dataset contains lifestyle and health-related information, including:
 - Blood Pressure
 - Heart Rate
 - Daily Steps
-- Occupation
-- Gender
-- Age
 
-The dataset contains 374 records.
+### Target Variable
 
-Target Classes
+The original `Quality of Sleep` score is converted into three project-defined categories:
 
-The original Quality of Sleep score is converted into three project-defined categories:
+```text
+4–6  → Poor
+7–8  → Average
+9    → Good
+````
 
-Quality of Sleep Score| Category
-4–6| Poor
-7–8| Average
-9| Good
-
-«Note: These categories are created specifically for this project and should not be interpreted as medical classifications.»
+> **Note:** These categories are created specifically for this project and should not be interpreted as official medical or clinical classifications.
 
 ---
 
+## 📋 Input Features
 
+The application accepts the following inputs:
 
-## ⚙️ How to Run the Project
+| Feature                     | Description                                   |
+| --------------------------- | --------------------------------------------- |
+| **Gender**                  | User's gender                                 |
+| **Age**                     | User's age                                    |
+| **Occupation**              | User's occupation                             |
+| **Sleep Duration**          | Average daily sleep duration                  |
+| **Physical Activity Level** | Daily physical activity level                 |
+| **Stress Level**            | Reported stress level                         |
+| **BMI Category**            | BMI classification                            |
+| **Blood Pressure**          | Blood pressure in `systolic/diastolic` format |
+| **Heart Rate**              | Resting heart rate                            |
+| **Daily Steps**             | Average number of daily steps                 |
 
-1. Open the Project
+### Blood Pressure Format
 
-Open the "sleep-quality-prediction" folder in Visual Studio Code.
+Blood pressure should be entered in the following format:
 
-Open the VS Code terminal and move into the project folder:
+```text
+120/80
+```
 
-cd sleep-quality-prediction
-
-2. Create a Virtual Environment
-
-python -m venv .venv
-
-3. Activate the Virtual Environment
-
-For Windows:
-
-.venv\Scripts\activate
-
-After activation, the terminal should display:
-
-(.venv)
-
-4. Install Dependencies
-
-pip install -r requirements.txt
-
-5. Prepare the Dataset
-
-Run:
-
-python prepare_data.py
-
-This command:
-
-- Loads the original dataset
-- Removes unnecessary columns
-- Creates the sleep quality categories
-- Saves the prepared dataset
-
-The prepared dataset is saved as:
-
-data/prepared_sleep_data.csv
-
-6. Train the Models
-
-Run:
-
-python train_model.py
-
-This command:
-
-- Loads the prepared dataset
-- Separates input features and target values
-- Preprocesses numerical and categorical data
-- Splits the dataset into training and testing sets
-- Trains Logistic Regression
-- Trains Random Forest
-- Calculates model accuracy
-- Displays classification reports
-- Displays confusion matrices
-- Performs five-fold cross-validation
-- Saves the trained models
-
-The following model files are generated:
-
-logistic_model.pkl
-random_forest_model.pkl
-
-7. Launch the Application
-
-Run:
-
-streamlit run app.py
-
-The Streamlit application will open in your browser.
-
-If it does not open automatically, visit:
-
-http://localhost:8501
+The application validates the blood pressure format before making a prediction.
 
 ---
 
-## 🖥️ How to Use the Application
+## 🤖 Machine Learning Models
 
-1. Open the Streamlit application.
-2. Enter your personal information.
-3. Fill in lifestyle details.
-4. Fill in health-related details.
-5. Enter blood pressure in "120/80" format.
-6. Click Predict Sleep Quality.
-7. View the Logistic Regression prediction.
-8. View the Random Forest prediction.
-9. Compare the predictions from both models.
-10. Read the general sleep improvement suggestions.
+The project trains and compares two supervised classification algorithms.
 
-The predicted category will be one of:
+### 1. Logistic Regression
 
-- Poor
-- Average
-- Good
+Logistic Regression is used as a baseline classification algorithm. It provides a simple and interpretable approach for predicting the three sleep-quality categories.
+
+### 2. Random Forest Classifier
+
+Random Forest is an ensemble learning algorithm that combines multiple decision trees to improve classification performance and capture nonlinear relationships between features.
+
+---
+
+## ⚙️ Machine Learning Pipeline
+
+The project follows the following machine learning workflow:
+
+```text
+Raw Dataset
+     |
+     v
+Data Cleaning
+     |
+     v
+Target Category Creation
+     |
+     v
+Feature Selection
+     |
+     v
+Numerical Scaling
+     |
+     v
+Categorical Encoding
+     |
+     v
+Stratified Train/Test Split
+     |
+     +-----------------------+
+     |                       |
+     v                       v
+Logistic Regression    Random Forest
+     |                       |
+     +-----------+-----------+
+                 |
+                 v
+          Model Evaluation
+                 |
+                 v
+        Save Trained Models
+                 |
+                 v
+        Streamlit Application
+                 |
+                 v
+           User Prediction
+```
+
+### Preprocessing
+
+The project uses the following preprocessing techniques:
+
+* Numerical feature scaling
+* Categorical feature encoding
+* Train-test splitting
+* Stratified sampling
+* Five-fold cross-validation
 
 ---
 
@@ -229,66 +198,81 @@ The predicted category will be one of:
 
 The models are evaluated using:
 
-- Accuracy
-- Precision
-- Recall
-- F1-score
-- Confusion Matrix
-- Five-fold Cross-Validation
+* Accuracy
+* Precision
+* Recall
+* F1-score
+* Confusion Matrix
+* Five-fold Cross-Validation
 
-Model Performance
+### Cross-Validation Results
 
-Model|  Mean Five-Fold Cross-Validation Accuracy
-Logistic Regressi| 95.43%
-Random Forest| 95.71%
+| Model               | Mean Five-Fold Cross-Validation Accuracy |
+| ------------------- | ---------------------------------------- |
+| Logistic Regression | **95.43%**                               |
+| Random Forest       | **95.71%**                               |
 
-The models achieve high accuracy on this dataset because sleep quality has strong relationships with features such as:
+Based on the reported five-fold cross-validation results, both models achieve high accuracy on this dataset, with **Random Forest performing slightly better**.
 
-- Sleep Duration
-- Stress Level
-- Heart Rate
-- Age
-- Physical Activity Level
-
-The cross-validation results provide a more reliable performance estimate than a single train-test split.
+> **Note:** High performance on this dataset does not necessarily mean that the models will achieve the same performance on new populations or real-world data.
 
 ---
 
 ## 🔄 Project Workflow
 
-Lifestyle and Health Inputs
-            |
-            ▼
-   Streamlit Web Interface
-            |
-            ▼
-      Input Validation
-            |
-            ▼
-    Data Preprocessing
-            |
-            ▼
-  ┌───────────────────────┐
-  │                       │
-  ▼                       ▼
-Logistic Regression   Random Forest
-  │                       │
-  └───────────┬───────────┘
-              ▼
-   Predicted Sleep Quality
-              |
-              ▼
- Results and General Suggestions
+```text
+Lifestyle & Health Inputs
+          |
+          v
+ Streamlit Web Interface
+          |
+          v
+    Input Validation
+          |
+          v
+  Data Preprocessing
+          |
+     +----+----+
+     |         |
+     v         v
+Logistic    Random
+Regression  Forest
+     |         |
+     +----+----+
+          |
+          v
+ Predicted Sleep Quality
+          |
+          v
+General Sleep Suggestions
+```
+
+---
+
+## 🖥️ Application Screenshots
+
+### User Input Form
+
+![User Input Form](screenshots/input.png)
+
+### Prediction Results
+
+![Prediction Results](screenshots/result.png)
 
 ---
 
 ## 📂 Project Structure
 
+```text
 sleep-quality-prediction/
 │
 ├── data/
 │   ├── Sleep_Health_and_Lifestyle_Dataset.csv
 │   └── prepared_sleep_data.csv
+│
+├── screenshots/
+│   ├── input.png
+│   └── result.png
 │
 ├── .venv/
 │
@@ -304,62 +288,248 @@ sleep-quality-prediction/
 │
 ├── requirements.txt
 └── README.md
+```
 
 ---
 
-### 2. User Input Form
+## 🚀 How to Run the Project
 
-![User Input Form](screenshots/input.png)
+### 1. Open the Project
 
-### 3. Prediction Results
+Open the `sleep-quality-prediction` folder in **Visual Studio Code**.
 
-![Prediction Results](screenshots/prediction_result.png)
+Open the VS Code terminal and move into the project folder:
+
+```bash
+cd sleep-quality-prediction
+```
+
 ---
 
-## 🚀 Future Enhancements
+### 2. Create a Virtual Environment
 
-- 📊 Add interactive analytical dashboards
-- 📈 Display model evaluation metrics inside the application
-- 💾 Save prediction history
-- 📄 Export prediction reports as PDF
-- 🌍 Add a multilingual interface
-- 🧠 Train models using larger and more diverse datasets
-- 🔍 Add feature importance visualizations
-- 🎯 Display prediction probabilities
-- ☁️ Deploy the application online
-- 💡 Provide more personalized sleep recommendations
+```bash
+python -m venv .venv
+```
+
+---
+
+### 3. Activate the Virtual Environment
+
+#### Windows
+
+```bash
+.venv\Scripts\activate
+```
+
+#### macOS/Linux
+
+```bash
+source .venv/bin/activate
+```
+
+After activation, the terminal should display:
+
+```text
+(.venv)
+```
+
+---
+
+### 4. Install Dependencies
+
+Install the required Python packages:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+### 5. Prepare the Dataset
+
+Run:
+
+```bash
+python prepare_data.py
+```
+
+This command:
+
+* Loads the original dataset
+* Removes unnecessary columns
+* Creates the sleep quality categories
+* Saves the prepared dataset
+
+The prepared dataset is saved as:
+
+```text
+data/prepared_sleep_data.csv
+```
+
+---
+
+### 6. Train the Models
+
+Run:
+
+```bash
+python train_model.py
+```
+
+This command:
+
+* Loads the prepared dataset
+* Separates input features and target values
+* Preprocesses numerical and categorical features
+* Performs a stratified train-test split
+* Trains Logistic Regression
+* Trains Random Forest
+* Calculates model accuracy
+* Displays classification reports
+* Displays confusion matrices
+* Performs five-fold cross-validation
+* Saves the trained models
+
+The following files are generated:
+
+```text
+logistic_model.pkl
+random_forest_model.pkl
+```
+
+---
+
+### 7. Launch the Streamlit Application
+
+Run:
+
+```bash
+streamlit run app.py
+```
+
+The Streamlit application will open in your browser.
+
+If it does not open automatically, visit:
+
+```text
+http://localhost:8501
+```
+
+---
+
+## 🖥️ How to Use the Application
+
+1. Open the Streamlit application.
+2. Enter your personal information.
+3. Enter lifestyle details.
+4. Enter health-related information.
+5. Enter blood pressure in `120/80` format.
+6. Click **Predict Sleep Quality**.
+7. View the **Logistic Regression** prediction.
+8. View the **Random Forest** prediction.
+9. Compare the predictions from both models.
+10. Read the general sleep improvement suggestions.
+
+The predicted category will be one of:
+
+* 🔴 **Poor**
+* 🟡 **Average**
+* 🟢 **Good**
+
+---
+
+## 🧪 Additional Scripts
+
+### Exploratory Data Analysis
+
+Run:
+
+```bash
+python eda.py
+```
+
+This script can be used to explore the dataset and generate visualizations.
+
+### Inspect Dataset
+
+Run:
+
+```bash
+python inspect_data.py
+```
+
+This script can be used to inspect the dataset structure and available features.
+
+### Validate Models
+
+Run:
+
+```bash
+python validate_model.py
+```
+
+This script can be used for additional model validation.
+
+---
+
+## 🔮 Future Enhancements
+
+* 📊 Add interactive analytical dashboards
+* 📈 Display model evaluation metrics inside the application
+* 💾 Save prediction history
+* 📄 Export prediction reports as PDF
+* 🌍 Add a multilingual interface
+* 🧠 Train models using larger and more diverse datasets
+* 🔍 Add feature importance visualizations
+* 🎯 Display prediction probabilities
+* ☁️ Deploy the application online
+* 💡 Provide more personalized sleep recommendations
+* 📱 Improve the interface for mobile devices
 
 ---
 
 ## ⚠️ Limitations
 
-- The dataset contains only 374 records.
-- The dataset may not represent the entire population.
-- The target categories are project-defined.
-- The model uses only the available dataset features.
-- Real-world sleep quality depends on many additional factors.
-- The high accuracy may be influenced by strong relationships between the input features and the target.
-- The model cannot provide medical diagnoses.
-- The application should not replace professional medical advice.
+* The dataset contains only **374 records**.
+* The dataset may not represent the entire population.
+* The target categories are project-defined.
+* The model uses only the available dataset features.
+* Real-world sleep quality depends on many additional factors.
+* High accuracy may be influenced by strong relationships between the available features and the target variable.
+* The model has not been developed or validated as a clinical prediction system.
+* The application cannot provide medical diagnoses.
+* Predictions should not replace professional medical advice.
 
 ---
 
-## ⚠️ Disclaimer
+## ⚕️ Disclaimer
 
-This project is developed for educational and demonstration purposes only.
+This project is developed for **educational and demonstration purposes only**.
 
-The predictions generated by this application are not medical advice and should not be considered a medical diagnosis or treatment recommendation.
+The predictions generated by this application are **not medical advice** and should not be considered a medical diagnosis or treatment recommendation.
 
-Users should consult a qualified healthcare professional for health-related concerns.
+Users with health-related concerns should consult a qualified healthcare professional.
 
 ---
 
-##👩‍💻 Author
+## 👩‍💻 Author
 
-Varshini Samireddi
+### Varshini Samireddi
 
-GitHub:
+**GitHub:**
 https://github.com/varshinisamireddi114
 
-LinkedIn:
+**LinkedIn:**
 https://www.linkedin.com/in/varshini-samireddi-21623832a
+
+---
+
+## ⭐ Support
+
+If you found this project useful, consider giving the repository a ⭐ on GitHub!
+
+Feedback and suggestions are welcome.
+
+````
+
