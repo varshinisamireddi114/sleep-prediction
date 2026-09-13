@@ -34,7 +34,7 @@ Users enter their personal, lifestyle, and health information. The application t
 
 ---
 
-🛠️ Tech Stack
+## 🛠️ Tech Stack
 
 - Python
 - Pandas – Data processing
@@ -81,11 +81,11 @@ The application accepts the following inputs:
 
 Blood pressure should be entered in the following format:
 
-```text
+
 120/80
 
 
-📊 Dataset
+ ## 📊 Dataset
 
 Dataset: Sleep Health and Lifestyle Dataset
 
@@ -120,7 +120,7 @@ Quality of Sleep Score| Category
 
 
 
-⚙️ How to Run the Project
+## ⚙️ How to Run the Project
 
 1. Open the Project
 
@@ -204,7 +204,7 @@ http://localhost:8501
 
 ---
 
-🖥️ How to Use the Application
+## 🖥️ How to Use the Application
 
 1. Open the Streamlit application.
 2. Enter your personal information.
@@ -225,7 +225,7 @@ The predicted category will be one of:
 
 ---
 
-📈 Model Evaluation
+## 📈 Model Evaluation
 
 The models are evaluated using:
 
@@ -254,7 +254,7 @@ The cross-validation results provide a more reliable performance estimate than a
 
 ---
 
-🔄 Project Workflow
+## 🔄 Project Workflow
 
 Lifestyle and Health Inputs
             |
@@ -282,7 +282,7 @@ Logistic Regression   Random Forest
 
 ---
 
-📂 Project Structure
+## 📂 Project Structure
 
 sleep-quality-prediction/
 │
@@ -306,6 +306,7 @@ sleep-quality-prediction/
 └── README.md
 
 ---
+
 ### 2. User Input Form
 
 ![User Input Form](screenshots/input.png)
@@ -315,7 +316,7 @@ sleep-quality-prediction/
 ![Prediction Results](screenshots/prediction_result.png)
 ---
 
-🚀 Future Enhancements
+## 🚀 Future Enhancements
 
 - 📊 Add interactive analytical dashboards
 - 📈 Display model evaluation metrics inside the application
@@ -330,7 +331,7 @@ sleep-quality-prediction/
 
 ---
 
-⚠️ Limitations
+## ⚠️ Limitations
 
 - The dataset contains only 374 records.
 - The dataset may not represent the entire population.
@@ -343,7 +344,7 @@ sleep-quality-prediction/
 
 ---
 
-⚠️ Disclaimer
+## ⚠️ Disclaimer
 
 This project is developed for educational and demonstration purposes only.
 
@@ -353,7 +354,7 @@ Users should consult a qualified healthcare professional for health-related conc
 
 ---
 
-👩‍💻 Author
+##👩‍💻 Author
 
 Varshini Samireddi
 
